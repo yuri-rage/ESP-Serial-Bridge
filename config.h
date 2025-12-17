@@ -31,10 +31,10 @@
 #define VERSION "2.0-ESP8266"
 #endif
 
-#define MODE_STA               // MODE_STA or MODE_AP
+#define MODE_AP               // MODE_STA or MODE_AP
 #define PROTOCOL_TCP           // uncomment to enable TCP server
 #define MAX_NMEA_CLIENTS 4     // max TCP clients
-#define PROTOCOL_UDP           // uncomment to enable UDP broadcast (ESP32 only)
+//#define PROTOCOL_UDP           // uncomment to enable UDP broadcast (ESP32 only)
 //#define BLUETOOTH 0          // uncomment to create a bluetooth serial bridge on the indicated serial port (ESP32 only)
 //#define BATTERY_SAVER        // uncomment to reduce wifi power
 

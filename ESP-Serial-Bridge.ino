@@ -180,24 +180,24 @@ void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info) {
 
             // NOTE: if updating SPIFFS this would be the place to unmount
             // SPIFFS using SPIFFS.end()
-            Serial.println("Start updating " + type);
+            debug.println("Start updating " + type);
         });
-        ArduinoOTA.onEnd([]() { Serial.println("\nEnd"); });
+        ArduinoOTA.onEnd([]() { debug.println("\nEnd"); });
         ArduinoOTA.onProgress([](unsigned int progress, unsigned int total) {
-            Serial.printf("Progress: %u%%\r", (progress / (total / 100)));
+            debug.printf("Progress: %u%%\r", (progress / (total / 100)));
         });
         ArduinoOTA.onError([](ota_error_t error) {
-            Serial.printf("Error[%u]: ", error);
+            debug.printf("Error[%u]: ", error);
             if (error == OTA_AUTH_ERROR)
-                Serial.println("Auth Failed");
+                debug.println("Auth Failed");
             else if (error == OTA_BEGIN_ERROR)
-                Serial.println("Begin Failed");
+                debug.println("Begin Failed");
             else if (error == OTA_CONNECT_ERROR)
-                Serial.println("Connect Failed");
+                debug.println("Connect Failed");
             else if (error == OTA_RECEIVE_ERROR)
-                Serial.println("Receive Failed");
+                debug.println("Receive Failed");
             else if (error == OTA_END_ERROR)
-                Serial.println("End Failed");
+                debug.println("End Failed");
         });
         // if DNSServer is started with "*" for domain name, it will reply with
         // provided IP to all DNS request
@@ -232,7 +232,7 @@ void WiFiStationDisconnected(WiFiEvent_t event, WiFiEventInfo_t info) {
 
 #ifdef BATTERY_SAVER
 #ifdef ESP32
-        esp_err_t esp_wifi_set_max_tx_power(50);  // lower WiFi Power
+        esp_wifi_set_max_tx_power(50);  // lower WiFi Power
 #elif defined(ESP8266)
     WiFi.setOutputPower(15);
 #endif
